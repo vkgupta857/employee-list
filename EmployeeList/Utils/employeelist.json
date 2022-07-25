@@ -1,0 +1,25 @@
+{
+    "count": 1,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "id": 3,
+            "first_name": "john",
+            "last_name": "Doe",
+            "email": "john@IBM.com",
+            "dob": "1998-08-09",
+            "hire_date": "1987-09-08",
+            "address": "delhi",
+            "city": "gurgaon",
+            "zip_code": "110012",
+            "country": "India",
+            "phone": "9479759579",
+            "photo": null,
+            "salary": "470786.00",
+            "designation": "technical officer",
+            "organization_name": "IBM",
+            "status": "Active"
+        }
+    ]
+}
