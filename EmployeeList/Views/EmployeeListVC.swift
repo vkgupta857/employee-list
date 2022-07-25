@@ -20,6 +20,7 @@ class EmployeeListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        self.navigationItem.title = "Hello"
+        configNavBar()
         employeesTableView.delegate = self
         employeesTableView.dataSource = self
         viewModel.updateEmployeeList = { [weak self] in
@@ -30,11 +31,17 @@ class EmployeeListVC: UIViewController {
         viewModel.getEmployees()
     }
     
-    @IBAction func logoutButtonAction(_ sender: Any) {
-        print("logout action")
+    private func configNavBar() {
+        let logoutBtn = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutButtonAction))
+        let addBtn = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonAction))
+        self.navigationItem.rightBarButtonItems = [logoutBtn, addBtn]
     }
     
-    @IBAction func navAddButtonAction(_ sender: Any) {
+    @objc func logoutButtonAction() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func addButtonAction() {
         print("add employee action")
     }
 }

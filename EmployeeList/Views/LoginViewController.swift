@@ -19,14 +19,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        emailTextField.delegate = self
-        emailTextField.becomeFirstResponder()
-        passwordTextField.delegate = self
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        gesture.cancelsTouchesInView = true
-        self.view.addGestureRecognizer(gesture)
-        
+        initView()
         viewModel.handleLoginSuccess = { [unowned self] accessToken in
             if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EmployeeListVC") as? EmployeeListVC {
                 vc.viewModel.accessToken = accessToken
@@ -37,6 +30,18 @@ class LoginViewController: UIViewController {
         viewModel.showError = { [unowned self] msg in
             self.showError(title: "Error", msg: msg)
         }
+    }
+    
+    private func initView() {
+        emailTextField.delegate = self
+        emailTextField.becomeFirstResponder()
+        // uncomment for testing
+//        emailTextField.text = "test@example.com"
+//        passwordTextField.text = "testing@example"
+        passwordTextField.delegate = self
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        gesture.cancelsTouchesInView = true
+        self.view.addGestureRecognizer(gesture)
     }
     
     @objc func dismissKeyboard() {
